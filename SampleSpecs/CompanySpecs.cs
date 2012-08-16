@@ -62,6 +62,7 @@ namespace SampleSpecs
                 .And(a_person)
                 .When(the_company_attempts_to_hire_the_person)
                 .Then(they_should_be_an_employee_of_the_company)
+                .And(they_should_have_an_employeeId)
                 .Run();
         }
 
