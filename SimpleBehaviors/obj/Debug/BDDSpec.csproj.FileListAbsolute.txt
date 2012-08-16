@@ -1,0 +1,7 @@
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\BDDSpec.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\BDDSpec.pdb
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\nunit.framework.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\nunit.framework.xml
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\BDDSpec.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\BDDSpec.pdb

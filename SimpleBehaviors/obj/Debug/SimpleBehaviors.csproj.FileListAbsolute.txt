@@ -1,0 +1,17 @@
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\SimpleBehaviors.pdb
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\nunit.framework.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\bin\Debug\nunit.framework.xml
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\BDDSpec\obj\Debug\SimpleBehaviors.pdb
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\Bin\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\Bin\SimpleBehaviors.pdb
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\SimpleBehaviors\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\SimpleBehaviors\obj\Debug\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\BDDSpec\SimpleBehaviors\obj\Debug\SimpleBehaviors.pdb
+C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\Bin\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\Bin\SimpleBehaviors.pdb
+C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SimpleBehaviors\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SimpleBehaviors\obj\Debug\SimpleBehaviors.dll
+C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SimpleBehaviors\obj\Debug\SimpleBehaviors.pdb
