@@ -35,6 +35,12 @@ namespace SimpleBehaviors
             return step;
         }
 
+        public WhenStep When(Action thisHappens)
+        {
+            var step = new WhenStep(this, thisHappens);
+            return step;
+        }
+
         public void Run()
         {
             IsRunning = true;
