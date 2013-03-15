@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using System.Dynamic;
 
 namespace SimpleBehaviors
 {
     [TestFixture]
     public class Feature
     {
-        public static Dictionary<string, object> ScenarioContext;
+        /// <summary>
+        /// Scenario Context facilitates the transfer of information between steps without 
+        /// the need to create a variable each time.
+        /// </summary>
+        public static dynamic ScenarioContext;
 
         [TestFixtureSetUp]
         public void FixtureSetup()
@@ -17,12 +22,12 @@ namespace SimpleBehaviors
         [SetUp]
         public void TestSetUp()
         {   
-            ScenarioContext = new Dictionary<string, object>();
+            ScenarioContext = new ExpandoObject();
             BeforeScenario();
         }
 
         [TearDown]
-        public void TearDown()
+        public void TestTearDown()
         {
             AfterScenario();
         }
@@ -36,6 +41,6 @@ namespace SimpleBehaviors
         public virtual void BeforeScenario(){}
         public virtual void AfterScenario(){}
         public virtual void BeforeFeature(){}
-        public virtual void AfterFeature(){ }
+        public virtual void AfterFeature(){}
     }
 }

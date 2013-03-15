@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
+using NUnit.Framework;
 using Should;
 using SimpleBehaviors;
 
@@ -54,7 +55,7 @@ namespace SampleSpecs
 
     public class  HireAnEmployee : HireAnEmployeeSteps
     {
-        [Scenario]
+        [Test]
         public void HiringAnEmployee()
         {
             new Scenario()
@@ -66,7 +67,7 @@ namespace SampleSpecs
                 .Run();
         }
 
-        [Scenario]
+        [Test]
         public void HiringAFelon()
         {
             new Scenario()
@@ -77,12 +78,30 @@ namespace SampleSpecs
                 .And(the_person_should_not_become_an_employee)
                 .Run();
         }
+
+        [Test]
+        public void UsingDefaultConstructor_CompnayShouldBeInValidState()
+        {
+            new Scenario()
+                .When(the_company_is_instantiated)
+                .Then(it_should_be_in_a_valid_state)
+                .Run();
+        }
+
+        private void the_company_is_instantiated()
+        {
+            company = new Company();
+        }
+        private void it_should_be_in_a_valid_state()
+        {
+            company.ShouldNotBeNull();
+        }
     }
 
     public class HireAnEmployeeSteps : Feature
     {
-        private Person person;
-        private Company company;
+        protected Person person;
+        protected Company company;
 
         protected void a_company_with_no_employees()
         {
@@ -100,7 +119,7 @@ namespace SampleSpecs
             }
             catch (Exception ex)
             {
-                ScenarioContext["ex"] = ex;
+                ScenarioContext.ThrownException = ex;
             }
             
         }
@@ -119,7 +138,7 @@ namespace SampleSpecs
         }
         protected void a_policy_violation_should_occur()
         {
-            var exception = (PolicyException) ScenarioContext["ex"];
+            var exception = ( PolicyException )ScenarioContext.ThrownException;
            
             exception.Message.ShouldEqual("We cannot hire felons");
         }

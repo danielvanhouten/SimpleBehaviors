@@ -2,26 +2,26 @@
 
 namespace SimpleBehaviors
 {
-    public class Step : IRunnable
+    public class Step 
     {
         protected StepPrefix Prefix { get; set; }
         protected Action MethodToRun { get; set; }
-        public Scenario ScenarioReference { get; set; }
+        public Scenario Scenario { get; set; }
 
         public Step(Scenario scenario, StepPrefix stepPrefix, Action methodToRun)
         {
             Prefix = stepPrefix;
             MethodToRun = methodToRun;
-            ScenarioReference = scenario;
-            ScenarioReference.AddStep(this);
+            Scenario = scenario;
+            Scenario.AddStep(this);
         }
 
-        public void Run()
+        internal void Run()
         {
             // Steps will likely fail if run alone. If the scenario
             // the step belongs to isn't running, then run the scenario instead.
-            if (!ScenarioReference.IsRunning){
-                ScenarioReference.Run();
+            if (!Scenario.IsRunning){
+                Scenario.Run();
                 return;
             }
 

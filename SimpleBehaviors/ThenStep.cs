@@ -11,5 +11,10 @@ namespace SimpleBehaviors
 
         public ThenStep(Scenario scenario, StepPrefix stepPrefix, Action methodToRun)
             : base(scenario, stepPrefix, methodToRun) { }
+
+        public new void Run()
+        {
+            base.Run();
+        }
     }
 }

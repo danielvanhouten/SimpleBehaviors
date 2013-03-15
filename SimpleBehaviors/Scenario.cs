@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace SimpleBehaviors
 {
-    public class Scenario : IRunnable
+    public class Scenario
     {
         private readonly Queue<Step> _innerSteps;
-        public bool IsRunning { get; protected set; }
+        internal bool IsRunning { get; set; }
         public Scenario()
         {
             PrintScenarioName(); 
@@ -24,7 +24,7 @@ namespace SimpleBehaviors
 
         public IEnumerable<Step> Steps { get; set; }
 
-        public void AddStep(Step step)
+        internal void AddStep(Step step)
         {
             _innerSteps.Enqueue(step);
         }
@@ -34,14 +34,14 @@ namespace SimpleBehaviors
             var step = new GivenStep(this, aContext);
             return step;
         }
-
+        
         public WhenStep When(Action thisHappens)
         {
             var step = new WhenStep(this, thisHappens);
             return step;
         }
-
-        public void Run()
+        
+        internal void Run()
         {
             IsRunning = true;
             var step = _innerSteps.Dequeue();

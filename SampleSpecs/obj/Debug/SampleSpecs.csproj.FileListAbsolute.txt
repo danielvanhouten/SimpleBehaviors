@@ -18,3 +18,13 @@ C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SampleSpecs\bin\Debug\nunit.f
 C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SampleSpecs\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SampleSpecs\obj\Debug\SampleSpecs.dll
 C:\Users\dvan houten\Desktop\Tests\SimpleBehaviors\SampleSpecs\obj\Debug\SampleSpecs.pdb
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\SampleSpecs.dll
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\SampleSpecs.pdb
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\nunit.framework.dll
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\Should.dll
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\SimpleBehaviors.dll
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\SimpleBehaviors.pdb
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\bin\Debug\nunit.framework.xml
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\obj\Debug\SampleSpecs.dll
+C:\Users\dvan houten\Documents\GitHub\SimpleBehaviors\SampleSpecs\obj\Debug\SampleSpecs.pdb
