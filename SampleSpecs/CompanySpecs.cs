@@ -8,10 +8,44 @@ using SimpleBehaviors;
 
 namespace SampleSpecs
 {
+    public class Messages
+    {
+        public const string CannotHireCriminals = "We cannot hire criminals";
+    }
+    public class PoliceRecord
+    {
+        private readonly IList<string> _crimes;
+
+        public PoliceRecord()
+        {
+            _crimes = new List<string>();
+        }
+
+        public bool HasCrimes
+        {
+            get { return Crimes.Any(); }
+        }
+
+        public IEnumerable<string> Crimes 
+        {
+            get { return _crimes; }
+        }
+
+        public void AddCrime(string description)
+        {
+            _crimes.Add(description);
+        }
+    }
     public class Person
     {
         public virtual string Name { get; set; }
-        public bool IsFelon { get; set; }
+        public PoliceRecord PoliceRecord { get; private set; }
+
+        public Person()
+        {
+            PoliceRecord = new PoliceRecord();
+        }
+
     }
     public class Company
     {
@@ -23,8 +57,8 @@ namespace SampleSpecs
         }
         public void Hire(Person person)
         {
-            if(person.IsFelon)
-                throw new PolicyException("We cannot hire felons");
+            if(person.PoliceRecord.HasCrimes)
+                throw new PolicyException(Messages.CannotHireCriminals);
 
             var employee = new Employee(person);
             Employees.Add(employee);
@@ -50,7 +84,8 @@ namespace SampleSpecs
     //            I want to hire an employee                   
     //            So that I can distribute the incoming work      
     // --------------------------------------------------------------                                                          
-    // Confirmations: A person cannot be hired if they are a felon
+    // Confirmations: A person cannot be hired if they have a criminal
+    //                record.
     // ==============================================================
 
     public class  HireAnEmployee : HireAnEmployeeSteps
@@ -65,7 +100,6 @@ namespace SampleSpecs
                 .Then(x => x.The_result_should_be_true())
                 .Run();
         }
-
 
         [Test]
         public void HiringAnEmployee()
@@ -84,7 +118,7 @@ namespace SampleSpecs
         {
             new Scenario()
                 .Given(a_company_with_no_employees)
-                .And(a_person_whos_been_convicted_of_a_felon)
+                .And(a_person_whos_committed_a_crime)
                 .When(the_company_attempts_to_hire_the_person)
                 .Then(a_policy_violation_should_occur)
                 .And(the_person_should_not_become_an_employee)
@@ -144,15 +178,16 @@ namespace SampleSpecs
             company.Employees.Single(e => e.Name == "John Brownington")
                         .EmployeeId.ShouldNotEqual(Guid.Empty);
         }
-        protected void a_person_whos_been_convicted_of_a_felon()
+        protected void a_person_whos_committed_a_crime()
         {
-            person = new Person { Name = "John Brownington", IsFelon = true};
+            person = new Person { Name = "John Brownington" };
+            person.PoliceRecord.AddCrime("Armed Robery");
         }
         protected void a_policy_violation_should_occur()
         {
             var exception = ( PolicyException )ScenarioContext.ThrownException;
-           
-            exception.Message.ShouldEqual("We cannot hire felons");
+
+            exception.Message.ShouldEqual( Messages.CannotHireCriminals );
         }
         protected void the_person_should_not_become_an_employee()
         {
