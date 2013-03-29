@@ -10,4 +10,17 @@ namespace SimpleBehaviors
         public GivenStep(Scenario scenario, StepPrefix stepPrefix, Action methodToRun)
             : base(scenario, stepPrefix, methodToRun) { }
     }
+
+
+    public class GivenStep<TSteps> : GivenStep
+    {
+        public GivenStep(Scenario scenario, Action methodToRun) : base(scenario, methodToRun)
+        {
+        }
+
+        public GivenStep(Scenario scenario, StepPrefix stepPrefix, Action methodToRun) : base(scenario, stepPrefix, methodToRun)
+        {
+        }
+    }
+
 }

@@ -56,6 +56,18 @@ namespace SampleSpecs
     public class  HireAnEmployee : HireAnEmployeeSteps
     {
         [Test]
+        public void TestingGenericScenario()
+        {
+            new Scenario<TestStepsContainer>()
+                .Given(x => x.I_set_something_up())
+                .When(x => x.A_method_is_called())
+                .And(x => x.Something_else_is_called())
+                .Then(x => x.The_result_should_be_true())
+                .Run();
+        }
+
+
+        [Test]
         public void HiringAnEmployee()
         {
             new Scenario()
@@ -145,6 +157,32 @@ namespace SampleSpecs
         protected void the_person_should_not_become_an_employee()
         {
             company.Employees.ShouldBeEmpty();
+        }
+    }
+
+    public class TestStepsContainer
+    {
+        public bool Result = false;
+
+        public void I_set_something_up()
+        {
+            Console.WriteLine("-- ::setting something up:: --");
+        }
+
+        public void A_method_is_called()
+        {
+            Console.WriteLine( "-- ::calling a method:: --" );
+        }
+
+        public void Something_else_is_called()
+        {
+            Console.WriteLine( "-- ::calling another method:: --" );
+            Result = true;
+        }
+
+        public void The_result_should_be_true()
+        {
+            Result.ShouldBeTrue();
         }
     }
 }

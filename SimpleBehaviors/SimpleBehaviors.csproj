@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="Feature.cs" />
+    <Compile Include="ISteps.cs" />
     <Compile Include="ThenStep.cs" />
     <Compile Include="GivenStep.cs" />
     <Compile Include="IRunnable.cs" />
