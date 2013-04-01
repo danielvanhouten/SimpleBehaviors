@@ -14,7 +14,7 @@
 // Narrative: As a Company                                 
 //            I want to hire an employee                   
 //            So that I can distribute the incoming work      
-// --------------------------------------------------------------                                                          
+// --------------------------------------------------------------       
 // Confirmations: A person cannot be hired if they have a criminal
 //                record.
 // ==============================================================
