@@ -1,5 +1,6 @@
 <h2> Simple Behaviors </h2>
-<i>A simple and easy to use BDD framework built on NUnit</i>
+<i>A simple and easy to use BDD framework built on NUnit. Reusable steps and fluent API make it easy to build readable, executable requirements.
+</i>
 
 
 <h2>Sample Syntax</h2>
@@ -115,6 +116,34 @@ public class HireAnEmployeeSteps : Feature
 
 ```
 
+<h3>Test Structure #2: Using Step Container Classes</h3>
+
+In this case, the class containing the tests doesn't need to inherit from
+anything. You can tell the Scenario where the steps will come from.
+
+This is helpful if you have a slot of steps, and perhaps want to
+break them up into more manageable bits.
+
+This is not quite as readable as the previous version, but I'll work on that in the future.
+
+``` csharp
+public class  HireAnEmployee
+{
+        [Test]
+        public void HiringAnEmployee()
+        {
+            new Scenario<HireAnEmployeeSteps>()
+                .Given( s => s.a_company_with_no_employees() )
+                .And( s => s.a_person() )
+                .When( s  => s.the_company_attempts_to_hire_the_person() )
+                .Then( s => s.they_should_be_an_employee_of_the_company() )
+                .And( s => s.they_should_have_an_employeeId() )
+                .Run();
+        }
+
+  // ... omitted for brevity ...
+}
+``` 
 
 <h3>The Test Console Output</h3>
 If a test fails, you can easily find the point of failure
@@ -142,34 +171,4 @@ When the company attempts to hire the person (passed)
 Then they should be an employee of the company  <<< FAIL
 
 -- Scenario Failed --
-``` 
-
-<br />
-
-<h3>Test Structure #2: Using Step Container Classes</h3>
-
-In this case, the class containing the tests doesn't need to inherit from
-anything. You can tell the Scenario where the steps will come from.
-
-This is helpful if you have a slot of steps, and perhaps want to
-break them up into more manageable bits.
-
-
-``` csharp
-public class  HireAnEmployee
-{
-        [Test]
-        public void HiringAnEmployee()
-        {
-            new Scenario<HireAnEmployeeSteps>()
-                .Given( s => s.a_company_with_no_employees() )
-                .And( s => s.a_person() )
-                .When( s  => s.the_company_attempts_to_hire_the_person() )
-                .Then( s => s.they_should_be_an_employee_of_the_company() )
-                .And( s => s.they_should_have_an_employeeId() )
-                .Run();
-        }
-
-  // ... omitted for brevity ...
-}
 ``` 

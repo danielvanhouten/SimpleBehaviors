@@ -88,72 +88,49 @@ namespace SampleSpecs
     //                record.
     // ==============================================================
 
-    public class  HireAnEmployee 
+    public class  HireAnEmployee : HireAnEmployeeSteps
     {
         [Test]
         public void HiringAnEmployee()
         {
-            new Scenario<HireAnEmployeeSteps>()
-                .Given( s => s.a_company_with_no_employees() )
-                .And( s => s.a_person() )
-                .When( s  => s.the_company_attempts_to_hire_the_person() )
-                .Then( s => s.they_should_be_an_employee_of_the_company() )
-                .And( s => s.they_should_have_an_employeeId() )
+            new Scenario()
+                .Given( a_company_with_no_employees )
+                .And( a_person )
+                .When( the_company_attempts_to_hire_the_person )
+                .Then( they_should_be_an_employee_of_the_company )
+                .And( they_should_have_an_employeeId )
                 .Run();
         }
 
         [Test]
-        public void TestingGenericScenario()
+        public void HiringAFelon()
         {
-            new Scenario<TestStepsContainer>()
-                .Given(x => x.I_set_something_up())
-                .When(x => x.A_method_is_called())
-                .And(x => x.Something_else_is_called())
-                .Then(x => x.The_result_should_be_true())
+            new Scenario()
+                .Given( a_company_with_no_employees )
+                .And( a_person_whos_committed_a_crime )
+                .When( the_company_attempts_to_hire_the_person )
+                .Then( a_policy_violation_should_occur )
+                .And( the_person_should_not_become_an_employee )
                 .Run();
         }
 
-        //[Test]
-        //public void HiringAnEmployee()
-        //{
-        //    new Scenario()
-        //        .Given(a_company_with_no_employees)
-        //        .And(a_person)
-        //        .When(the_company_attempts_to_hire_the_person)
-        //        .Then(they_should_be_an_employee_of_the_company)
-        //        .And(they_should_have_an_employeeId)
-        //        .Run();
-        //}
+        [Test]
+        public void UsingDefaultConstructor_CompnayShouldBeInValidState()
+        {
+            new Scenario()
+                .When( the_company_is_instantiated )
+                .Then( it_should_be_in_a_valid_state )
+                .Run();
+        }
 
-        //[Test]
-        //public void HiringAFelon()
-        //{
-        //    new Scenario()
-        //        .Given(a_company_with_no_employees)
-        //        .And(a_person_whos_committed_a_crime)
-        //        .When(the_company_attempts_to_hire_the_person)
-        //        .Then(a_policy_violation_should_occur)
-        //        .And(the_person_should_not_become_an_employee)
-        //        .Run();
-        //}
-
-        //[Test]
-        //public void UsingDefaultConstructor_CompnayShouldBeInValidState()
-        //{
-        //    new Scenario()
-        //        .When(the_company_is_instantiated)
-        //        .Then(it_should_be_in_a_valid_state)
-        //        .Run();
-        //}
-
-        //private void the_company_is_instantiated()
-        //{
-        //    company = new Company();
-        //}
-        //private void it_should_be_in_a_valid_state()
-        //{
-        //    company.ShouldNotBeNull();
-        //}
+        private void the_company_is_instantiated()
+        {
+            company = new Company();
+        }
+        private void it_should_be_in_a_valid_state()
+        {
+            company.ShouldNotBeNull();
+        }
     }
 
     public class HireAnEmployeeSteps : Feature
