@@ -88,7 +88,7 @@ namespace SampleSpecs
     //                record.
     // ==============================================================
 
-    public class  HireAnEmployee : Feature
+    public class  HireAnEmployee 
     {
         [Test]
         public void HiringAnEmployee()
@@ -183,7 +183,7 @@ namespace SampleSpecs
         }
         public void they_should_be_an_employee_of_the_company()
         {
-            company.Employees.Any(x => x.Name == "John Brownidngton").ShouldBeTrue();
+            company.Employees.Any(x => x.Name == "John Brownington").ShouldBeTrue();
         }
         public void they_should_have_an_employeeId()
         {

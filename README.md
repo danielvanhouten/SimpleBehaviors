@@ -52,7 +52,8 @@ public class HireAnEmployee : HireAnEmployeeSteps
         }
 }
 
-
+// The following "Steps" class contains one method for each
+// step of the above feature.
 
 public class HireAnEmployeeSteps : Feature
 {
@@ -143,8 +144,32 @@ Then they should be an employee of the company  <<< FAIL
 -- Scenario Failed --
 ``` 
 
-
 <br />
 
 <h3>Test Structure #2: Using Step Container Classes</h3>
-... docs coming soon
+
+In this case, the class containing the tests doesn't need to inherit from
+anything. You can tell the Scenario where the steps will come from.
+
+This is helpful if you have a slot of steps, and perhaps want to
+break them up into more manageable bits.
+
+
+``` csharp
+public class  HireAnEmployee
+{
+        [Test]
+        public void HiringAnEmployee()
+        {
+            new Scenario<HireAnEmployeeSteps>()
+                .Given( s => s.a_company_with_no_employees() )
+                .And( s => s.a_person() )
+                .When( s  => s.the_company_attempts_to_hire_the_person() )
+                .Then( s => s.they_should_be_an_employee_of_the_company() )
+                .And( s => s.they_should_have_an_employeeId() )
+                .Run();
+        }
+
+  // ... omitted for brevity ...
+}
+``` 
