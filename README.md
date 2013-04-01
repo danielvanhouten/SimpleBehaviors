@@ -121,7 +121,7 @@ public class HireAnEmployeeSteps : Feature
 In this case, the class containing the tests doesn't need to inherit from
 anything. You can tell the Scenario where the steps will come from.
 
-This is helpful if you have a slot of steps, and perhaps want to
+This is helpful if you have a lot of steps, and perhaps want to
 break them up into more manageable bits.
 
 This is not quite as readable as the previous version, but I'll work on that in the future.
