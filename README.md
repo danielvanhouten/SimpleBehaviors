@@ -149,7 +149,7 @@ public class  HireAnEmployee
 If a test fails, you can easily find the point of failure
 by examining the console output
 
-``` csharp
+``` text
 
 Scenario: Hiring An Employee
 ----------------------------
