@@ -133,11 +133,11 @@ public class  HireAnEmployee
         public void HiringAnEmployee()
         {
             new Scenario<HireAnEmployeeSteps>()
-                .Given( s => s.a_company_with_no_employees() )
-                .And( s => s.a_person() )
+                .Given(s => s.a_company_with_no_employees() )
+                .And(  s => s.a_person() )
                 .When( s  => s.the_company_attempts_to_hire_the_person() )
                 .Then( s => s.they_should_be_an_employee_of_the_company() )
-                .And( s => s.they_should_have_an_employeeId() )
+                .And(  s => s.they_should_have_an_employeeId() )
                 .Run();
         }
 
