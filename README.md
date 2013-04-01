@@ -53,7 +53,7 @@ public class HireAnEmployee : HireAnEmployeeSteps
 }
 
 // The following "Steps" class contains one method for each
-// step of the above feature.
+// step of the above
 
 public class HireAnEmployeeSteps : Feature
 {
