@@ -22,7 +22,7 @@
 ``` 
 
 
-<h3>Using Inheritence</h3>
+<h3>Test Structure #1: Using Inheritence</h3>
 
 ``` csharp
 public class HireAnEmployee : HireAnEmployeeSteps
@@ -115,10 +115,36 @@ public class HireAnEmployeeSteps : Feature
 ```
 
 
+<h3>The Test Console Output</h3>
+If a test fails, you can easily find the point of failure
+by examining the console output
 
+``` csharp
+
+Scenario: Hiring An Employee
+----------------------------
+Given a company with no employees (passed)
+  And a person (passed)
+When the company attempts to hire the person (passed)
+Then they should be an employee of the company (passed)
+  And they should have an employee id (passed)
+``` 
+<br>
+
+Should a test fail, this will be the output:
+``` csharp
+Scenario: Hiring An Employee
+----------------------------
+Given a company with no employees (passed)
+  And a person (passed)
+When the company attempts to hire the person (passed)
+Then they should be an employee of the company  <<< FAIL
+
+-- Scenario Failed --
+``` 
 
 
 <br />
 
-<h3>Using Step Container Classes</h3>
+<h3>Test Structure #2: Using Step Container Classes</h3>
 ... docs coming soon

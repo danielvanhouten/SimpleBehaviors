@@ -22,10 +22,10 @@ namespace SimpleBehaviors
             var nextStep = new GivenStep(givenStep.Scenario, StepPrefix.And, anotherContext);
             return nextStep;
         }
-        public static GivenStep<TSteps> And<TSteps>( this GivenStep givenStep, Expression<Action<TSteps>> anotherContext )
+        public static GivenStep<TSteps> And<TSteps>( this GivenStep<TSteps> givenStep, Expression<Action<TSteps>> anotherContext )
         {
             var action = TryBuildStepAction( givenStep, anotherContext );
-            return new GivenStep<TSteps>( givenStep.Scenario, action );
+            return new GivenStep<TSteps>( givenStep.Scenario, StepPrefix.And, action );
         }
         #endregion
 
@@ -56,15 +56,15 @@ namespace SimpleBehaviors
 
 
         #region Then Step Extensions
-        public static ThenStep And(this ThenStep whenStep, Action thisShouldAlsoBeTrue)
+        public static ThenStep And(this ThenStep thenStep, Action thisShouldAlsoBeTrue)
         {
-            var nextStep = new ThenStep(whenStep.Scenario, StepPrefix.And, thisShouldAlsoBeTrue);
+            var nextStep = new ThenStep(thenStep.Scenario, StepPrefix.And, thisShouldAlsoBeTrue);
             return nextStep;
         }
         public static ThenStep<TSteps> And<TSteps>( this ThenStep<TSteps> thenStep, Expression<Action<TSteps>> thisShouldAlsoBeTrue )
         {
             var action = TryBuildStepAction( thenStep, thisShouldAlsoBeTrue );
-            return new ThenStep<TSteps>( thenStep.Scenario, action );
+            return new ThenStep<TSteps>( thenStep.Scenario, StepPrefix.And, action );
         }
         #endregion
 

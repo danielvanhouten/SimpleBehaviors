@@ -88,8 +88,20 @@ namespace SampleSpecs
     //                record.
     // ==============================================================
 
-    public class  HireAnEmployee : HireAnEmployeeSteps
+    public class  HireAnEmployee : Feature
     {
+        [Test]
+        public void HiringAnEmployee()
+        {
+            new Scenario<HireAnEmployeeSteps>()
+                .Given( s => s.a_company_with_no_employees() )
+                .And( s => s.a_person() )
+                .When( s  => s.the_company_attempts_to_hire_the_person() )
+                .Then( s => s.they_should_be_an_employee_of_the_company() )
+                .And( s => s.they_should_have_an_employeeId() )
+                .Run();
+        }
+
         [Test]
         public void TestingGenericScenario()
         {
@@ -101,47 +113,47 @@ namespace SampleSpecs
                 .Run();
         }
 
-        [Test]
-        public void HiringAnEmployee()
-        {
-            new Scenario()
-                .Given(a_company_with_no_employees)
-                .And(a_person)
-                .When(the_company_attempts_to_hire_the_person)
-                .Then(they_should_be_an_employee_of_the_company)
-                .And(they_should_have_an_employeeId)
-                .Run();
-        }
+        //[Test]
+        //public void HiringAnEmployee()
+        //{
+        //    new Scenario()
+        //        .Given(a_company_with_no_employees)
+        //        .And(a_person)
+        //        .When(the_company_attempts_to_hire_the_person)
+        //        .Then(they_should_be_an_employee_of_the_company)
+        //        .And(they_should_have_an_employeeId)
+        //        .Run();
+        //}
 
-        [Test]
-        public void HiringAFelon()
-        {
-            new Scenario()
-                .Given(a_company_with_no_employees)
-                .And(a_person_whos_committed_a_crime)
-                .When(the_company_attempts_to_hire_the_person)
-                .Then(a_policy_violation_should_occur)
-                .And(the_person_should_not_become_an_employee)
-                .Run();
-        }
+        //[Test]
+        //public void HiringAFelon()
+        //{
+        //    new Scenario()
+        //        .Given(a_company_with_no_employees)
+        //        .And(a_person_whos_committed_a_crime)
+        //        .When(the_company_attempts_to_hire_the_person)
+        //        .Then(a_policy_violation_should_occur)
+        //        .And(the_person_should_not_become_an_employee)
+        //        .Run();
+        //}
 
-        [Test]
-        public void UsingDefaultConstructor_CompnayShouldBeInValidState()
-        {
-            new Scenario()
-                .When(the_company_is_instantiated)
-                .Then(it_should_be_in_a_valid_state)
-                .Run();
-        }
+        //[Test]
+        //public void UsingDefaultConstructor_CompnayShouldBeInValidState()
+        //{
+        //    new Scenario()
+        //        .When(the_company_is_instantiated)
+        //        .Then(it_should_be_in_a_valid_state)
+        //        .Run();
+        //}
 
-        private void the_company_is_instantiated()
-        {
-            company = new Company();
-        }
-        private void it_should_be_in_a_valid_state()
-        {
-            company.ShouldNotBeNull();
-        }
+        //private void the_company_is_instantiated()
+        //{
+        //    company = new Company();
+        //}
+        //private void it_should_be_in_a_valid_state()
+        //{
+        //    company.ShouldNotBeNull();
+        //}
     }
 
     public class HireAnEmployeeSteps : Feature
@@ -149,15 +161,15 @@ namespace SampleSpecs
         protected Person person;
         protected Company company;
 
-        protected void a_company_with_no_employees()
+        public void a_company_with_no_employees()
         {
             company = new Company();
         }
-        protected void a_person()
+        public void a_person()
         {
             person = new Person { Name = "John Brownington" };
         }
-        protected void the_company_attempts_to_hire_the_person()
+        public void the_company_attempts_to_hire_the_person()
         {
             try
             {
@@ -169,27 +181,27 @@ namespace SampleSpecs
             }
             
         }
-        protected void they_should_be_an_employee_of_the_company()
+        public void they_should_be_an_employee_of_the_company()
         {
-            company.Employees.Any(x => x.Name == "John Brownington").ShouldBeTrue();
+            company.Employees.Any(x => x.Name == "John Brownidngton").ShouldBeTrue();
         }
-        protected void they_should_have_an_employeeId()
+        public void they_should_have_an_employeeId()
         {
             company.Employees.Single(e => e.Name == "John Brownington")
                         .EmployeeId.ShouldNotEqual(Guid.Empty);
         }
-        protected void a_person_whos_committed_a_crime()
+        public void a_person_whos_committed_a_crime()
         {
             person = new Person { Name = "John Brownington" };
             person.PoliceRecord.AddCrime("Armed Robery");
         }
-        protected void a_policy_violation_should_occur()
+        public void a_policy_violation_should_occur()
         {
             var exception = ( PolicyException )ScenarioContext.ThrownException;
 
             exception.Message.ShouldEqual( Messages.CannotHireCriminals );
         }
-        protected void the_person_should_not_become_an_employee()
+        public void the_person_should_not_become_an_employee()
         {
             company.Employees.ShouldBeEmpty();
         }
