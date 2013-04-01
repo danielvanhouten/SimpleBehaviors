@@ -146,8 +146,7 @@ public class  HireAnEmployee
 ``` 
 
 <h3>The Test Console Output</h3>
-If a test fails, you can easily find the point of failure
-by examining the console output
+You can see a readout of the test steps by examining the console output
 
 ``` text
 
@@ -159,10 +158,9 @@ When the company attempts to hire the person (passed)
 Then they should be an employee of the company (passed)
   And they should have an employee id (passed)
 ``` 
-<br>
 
 Should a test fail, this will be the output:
-``` csharp
+``` text
 Scenario: Hiring An Employee
 ----------------------------
 Given a company with no employees (passed)
